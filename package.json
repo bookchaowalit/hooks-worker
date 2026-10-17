@@ -10,6 +10,10 @@
     "deploy": "wrangler deploy",
     "build": "wrangler deploy --dry-run"
   },
+  "overrides": {
+    "sharp": "0.35.5",
+    "undici": "7.29.1"
+  },
   "devDependencies": {
     "@types/node": "26.6.1",
     "tsx": "4.23.13",
