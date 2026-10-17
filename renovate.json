@@ -1,0 +1,59 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "timezone": "Asia/Bangkok",
+  "schedule": [
+    "before 9am on monday"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": [
+      "before 9am on the first day of the month"
+    ]
+  },
+  "packageRules": [
+    {
+      "description": "Shared reusable workflows: one PR when platform-ci-workflows releases",
+      "matchDepNames": [
+        "bookchaowalit/platform-ci-workflows"
+      ],
+      "groupName": "platform-ci-workflows"
+    },
+    {
+      "description": "Batch non-major npm updates per app",
+      "matchManagers": [
+        "npm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "npm non-major"
+    },
+    {
+      "description": "Batch non-major Python updates",
+      "matchManagers": [
+        "pip_requirements",
+        "pep621"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "python non-major"
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "security"
+    ]
+  }
+}
